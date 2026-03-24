@@ -71,7 +71,6 @@
                     </select>
                 </div>
 
-                {{-- Huidige sort state bewaren --}}
                 <input type="hidden" name="sort" value="{{ $filters['sort'] }}">
                 <input type="hidden" name="dir" value="{{ $filters['dir'] }}">
 
@@ -131,6 +130,7 @@
                         <th>Author</th>
                         <th>Categories</th>
                         <th><a class="text-decoration-none" href="{{ $sortUrl('is_published') }}">Status{!! $sortIcon('is_published') !!}</a></th>
+                        <th><a class="text-decoration-none" href="{{ $sortUrl('is_featured') }}">Featured{!! $sortIcon('is_featured') !!}</a></th>
                         <th><a class="text-decoration-none" href="{{ $sortUrl('published_at') }}">Published{!! $sortIcon('published_at') !!}</a></th>
                         <th><a class="text-decoration-none" href="{{ $sortUrl('created_at') }}">Created{!! $sortIcon('created_at') !!}</a></th>
                         <th class="text-end">Actions</th>
@@ -178,6 +178,14 @@
                                     <span class="badge bg-success">published</span>
                                 @else
                                     <span class="badge bg-secondary">draft</span>
+                                @endif
+                            </td>
+
+                            <td>
+                                @if($post->is_featured)
+                                    <span class="badge bg-primary">featured</span>
+                                @else
+                                    <span class="badge bg-light text-dark">no</span>
                                 @endif
                             </td>
 
@@ -240,7 +248,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="text-center text-muted py-4">
+                            <td colspan="10" class="text-center text-muted py-4">
                                 No posts found. Try clearing filters.
                             </td>
                         </tr>

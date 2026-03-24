@@ -107,14 +107,6 @@
                                         <a class="nav-link"
                                            href="{{ route('contact') }}">Contact</a>
                                     </li>
-                                    @auth
-                                        @if(Route::has('backend.dashboard'))
-                                            <li class="nav-item">
-                                                <a class="nav-link"
-                                                   href="{{ route('backend.dashboard') }}">Dashboard</a>
-                                            </li>
-                                        @endif
-                                    @endauth
                                 </ul>
                                 <div class="header-search-form mr-auto">
                                     <form action="#" method="post">

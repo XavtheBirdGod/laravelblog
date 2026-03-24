@@ -34,28 +34,43 @@ class HomeController extends Controller
             $featuredPosts = $featuredPosts->merge($extraPosts);
         }
 
+        $allExcludedIds = $featuredPosts->pluck('id');
+
         $latestPosts = Post::query()
             ->with(['user', 'categories', 'media'])
             ->where('is_published', true)
-            ->whereNotIn('id', $featuredPosts->pluck('id'))
             ->latest('published_at')
             ->take(8)
             ->get();
+
+        $allExcludedIds = $allExcludedIds->merge($latestPosts->pluck('id'));
 
         $categoryPosts = Post::query()
             ->with(['user', 'categories', 'media'])
             ->where('is_published', true)
+            ->whereNotIn('id', $allExcludedIds)
             ->latest('published_at')
-            ->skip(4)
             ->take(10)
             ->get();
+
+        $allExcludedIds = $allExcludedIds->merge($categoryPosts->pluck('id'));
 
         $videoPosts = Post::query()
             ->with(['user', 'categories', 'media'])
             ->where('is_published', true)
+            ->whereNotIn('id', $allExcludedIds)
             ->latest('published_at')
-            ->skip(14)
             ->take(8)
+            ->get();
+
+        $allExcludedIds = $allExcludedIds->merge($videoPosts->pluck('id'));
+
+        $editorialPosts = Post::query()
+            ->with(['user', 'categories', 'media'])
+            ->where('is_published', true)
+            ->whereNotIn('id', $allExcludedIds)
+            ->latest('published_at')
+            ->take(4)
             ->get();
 
         $categories = Category::query()
@@ -74,12 +89,7 @@ class HomeController extends Controller
             'categoryPosts' => $categoryPosts,
             'categories' => $categories,
             'videoPosts' => $videoPosts,
-            'editorialPosts' => Post::query()
-                ->where('is_published', true)
-                ->latest('published_at')
-                ->skip(22)
-                ->take(4)
-                ->get(),
+            'editorialPosts' => $editorialPosts,
         ]);
     }
 }

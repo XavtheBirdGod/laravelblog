@@ -73,6 +73,32 @@
         @enderror
     </div>
 
+    {{-- ========================= FEATURED ========================= --}}
+    <div class="col-12 col-md-3 d-flex align-items-center">
+        <div class="form-check mt-3">
+            <input
+                type="hidden"
+                name="is_featured"
+                value="0"
+            >
+            <input
+                type="checkbox"
+                name="is_featured"
+                value="1"
+                id="is_featured"
+                @checked((bool) old('is_featured', $post?->is_featured ?? false))
+                class="form-check-input @error('is_featured') is-invalid @enderror"
+            >
+            <label class="form-check-label" for="is_featured">
+                Featured post (on homepage)
+            </label>
+
+            @error('is_featured')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+
     {{-- ========================= PUBLISHED AT ========================= --}}
     <div class="col-12 col-md-3">
         <label class="form-label">Published at</label>

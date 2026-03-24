@@ -194,9 +194,9 @@ class Post extends Model
      * Veilige sortering op whitelisted kolommen.
      */
     #[Scope]
-    protected function sortBySafe(Builder $query, string $sort, string $dir): Builder
+    public function sortBySafe(Builder $query, string $sort, string $dir): Builder
     {
-        $allowed = ['id', 'title', 'slug', 'created_at', 'published_at', 'is_published'];
+        $allowed = ['id', 'title', 'slug', 'created_at', 'published_at', 'is_published', 'is_featured'];
 
         if (! in_array($sort, $allowed, true)) {
             $sort = 'created_at';

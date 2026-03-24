@@ -24,6 +24,7 @@ class PostService
                 'excerpt' => $data['excerpt'] ?? null,
                 'body' => $data['body'],
                 'is_published' => $data['is_published'],
+                'is_featured' => $data['is_featured'],
                 'published_at' => $data['published_at'] ?? null,
             ]);
             $post->categories()->sync($data['categories'] ?? []);
@@ -50,6 +51,7 @@ class PostService
                 'excerpt' => $data['excerpt'] ?? null,
                 'body' => $data['body'],
                 'is_published' => $data['is_published'],
+                'is_featured' => $data['is_featured'],
                 'published_at' => $data['published_at'] ?? null,
             ]);
             $post->categories()->sync($data['categories'] ?? []);

@@ -23,7 +23,7 @@
                                     @endforeach
                                 </div>
                                 <h4>
-                                    <a href="{{ route('posts.show', $post) }}" class="fontpt">{{ $post->title }}</a>
+                                    <a href="{{ route('posts.show', $post) }}" class="font-pt">{{ $post->title }}</a>
                                 </h4>
                                 <p>
                                     {{ $post->excerpt ?:
