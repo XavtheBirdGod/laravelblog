@@ -1,15 +1,5 @@
-@php
-    /**
-     * Deze partial wordt gedeeld tussen create en edit.
-     *
-     * old() wint altijd na validatiefouten.
-     * $post kan null zijn bij create.
-     */
-@endphp
-
 <div class="row g-3">
 
-    {{-- ========================= TITLE ========================= --}}
     <div class="col-12 col-md-6">
         <label class="form-label">Title</label>
         <input
@@ -24,7 +14,6 @@
         @enderror
     </div>
 
-    {{-- ========================= SLUG ========================= --}}
     <div class="col-12 col-md-6">
         <label class="form-label">Slug</label>
         <input
@@ -41,7 +30,6 @@
         <div class="form-text">Leave blank to generate automatically from the title.</div>
     </div>
 
-    {{-- ========================= AUTHOR ========================= --}}
     <div class="col-12 col-md-6">
         <label class="form-label">Author</label>
         <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
@@ -60,7 +48,6 @@
         @enderror
     </div>
 
-    {{-- ========================= STATUS ========================= --}}
     <div class="col-12 col-md-3 d-flex align-items-center">
         <div class="form-check mt-3">
             <input
@@ -86,7 +73,6 @@
         </div>
     </div>
 
-    {{-- ========================= FEATURED ========================= --}}
     <div class="col-12 col-md-3 d-flex align-items-center">
         <div class="form-check mt-3">
             <input
@@ -112,7 +98,6 @@
         </div>
     </div>
 
-    {{-- ========================= PUBLISHED AT ========================= --}}
     <div class="col-12 col-md-3">
         <label class="form-label">Published at</label>
         <input
@@ -129,7 +114,6 @@
         <div class="form-text">Leave blank to use the current moment when publishing.</div>
     </div>
 
-    {{-- ========================= EXCERPT ========================= --}}
     <div class="col-12">
         <label class="form-label">Excerpt</label>
         <textarea
@@ -143,7 +127,6 @@
         @enderror
     </div>
 
-    {{-- ========================= BODY ========================= --}}
     <div class="col-12">
         <label class="form-label">Body</label>
         <textarea
@@ -157,7 +140,6 @@
         @enderror
     </div>
 
-    {{-- ========================= CATEGORIES ========================= --}}
     <div class="col-12">
         <label class="form-label d-block">Categories</label>
 
@@ -198,10 +180,9 @@
         <div class="invalid-feedback d-block">{{ $message }}</div>
         @enderror
     </div>
+
     <div class="col-12">
-
         <label class="form-label">Featured image</label>
-
         <input
             type="file"
             name="image"
@@ -218,26 +199,19 @@
         </div>
 
         @if($post?->media)
-
             <div class="mt-3">
-
                 <div class="small text-muted mb-2">
                     Current image
                 </div>
-
                 <img
                     src="{{ $post->media->url() }}"
                     class="img-thumbnail"
                     style="max-width:200px;"
                 >
-
             </div>
-
         @endif
-
     </div>
 
-    {{-- ========================= ACTIONS ========================= --}}
     <div class="col-12 d-flex gap-2 mt-2">
         <button class="btn btn-primary" type="submit">
             {{ $submitLabel ?? 'Save' }}

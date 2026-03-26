@@ -15,9 +15,6 @@ class UpdatePostRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Zelfde normalisatie als bij store.
-     */
     protected function prepareForValidation(): void
     {
         $title = trim((string) $this->input('title', ''));

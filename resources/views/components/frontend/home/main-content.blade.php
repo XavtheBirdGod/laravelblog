@@ -160,7 +160,7 @@
                             <h5>Advert</h5>
                         </div>
                         <div class="single-dont-miss-post-thumb">
-                            <img src="{{ asset('frontend/gazette/img/bgimg/add.png') }}" alt="advertentie">
+                            <img src="{{ asset('frontend/gazette/img/bg-img/add.png') }}" alt="advertentie">
                         </div>
                     </div>
                 </div>

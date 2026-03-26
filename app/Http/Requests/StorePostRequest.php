@@ -15,16 +15,6 @@ class StorePostRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Input normaliseren vóór validatie.
-     *
-     * Wat doen we hier?
-     * - title trimmen
-     * - slug automatisch genereren als die leeg is
-     * - categories altijd als array doorgeven
-     * - published_at automatisch invullen als post gepubliceerd is
-     *   maar er nog geen datum werd meegegeven
-     */
     protected function prepareForValidation(): void
     {
         $title = trim((string) $this->input('title', ''));
