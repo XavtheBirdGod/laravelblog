@@ -6,7 +6,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading">
-                        <h4 class="font-pt">Alle Artikels</h4>
+                        <h4 class="font-pt">
+                            @if(request('q'))
+                                Zoekresultaten voor: "{{ request('q') }}"
+                            @else
+                                Alle Artikels
+                            @endif
+                        </h4>
                     </div>
                 </div>
             </div>

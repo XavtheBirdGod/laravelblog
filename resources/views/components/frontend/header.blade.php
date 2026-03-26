@@ -109,10 +109,11 @@
                                     </li>
                                 </ul>
                                 <div class="header-search-form mr-auto">
-                                    <form action="#" method="post">
+                                    <form action="{{ route('posts.index') }}" method="get">
                                         <input type="search"
                                                placeholder="Input your keyword then press enter..." id="search"
-                                               name="search">
+                                               name="q"
+                                               value="{{ request('q') }}">
                                     </form>
                                 </div>
                                 <div id="searchbtn">

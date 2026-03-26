@@ -12,14 +12,19 @@ class PostController extends Controller
 {
     public function index(): View
     {
+        $q = request('q');
+
         $posts = Post::query()
             ->with(['user', 'categories', 'media'])
             ->where('is_published', true)
+            ->search((string) $q)
             ->latest('published_at')
-            ->paginate(12);
+            ->paginate(12)
+            ->withQueryString();
 
         return view('frontend.posts.index', [
             'posts' => $posts,
+            'q' => $q,
         ]);
     }
 
