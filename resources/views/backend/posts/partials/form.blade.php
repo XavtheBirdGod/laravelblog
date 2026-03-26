@@ -61,16 +61,29 @@
     </div>
 
     {{-- ========================= STATUS ========================= --}}
-    <div class="col-12 col-md-3">
-        <label class="form-label">Status</label>
-        <select name="is_published" class="form-select @error('is_published') is-invalid @enderror">
-            <option value="1" @selected((string) old('is_published', $post?->is_published ?? '0') === '1')>Published</option>
-            <option value="0" @selected((string) old('is_published', $post?->is_published ?? '0') === '0')>Draft</option>
-        </select>
+    <div class="col-12 col-md-3 d-flex align-items-center">
+        <div class="form-check mt-3">
+            <input
+                type="hidden"
+                name="is_published"
+                value="0"
+            >
+            <input
+                type="checkbox"
+                name="is_published"
+                value="1"
+                id="is_published"
+                @checked((bool) old('is_published', $post?->is_published ?? false))
+                class="form-check-input @error('is_published') is-invalid @enderror"
+            >
+            <label class="form-check-label" for="is_published">
+                Published
+            </label>
 
-        @error('is_published')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
+            @error('is_published')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
     </div>
 
     {{-- ========================= FEATURED ========================= --}}

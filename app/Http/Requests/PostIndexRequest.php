@@ -28,7 +28,7 @@ class PostIndexRequest extends FormRequest
             'trashed' => ['nullable', Rule::in(['with', 'only'])],
 
             // Sortering
-            'sort' => ['nullable', Rule::in(['id', 'title', 'slug', 'created_at', 'published_at', 'is_published'])],
+            'sort' => ['nullable', Rule::in(['id', 'title', 'slug', 'created_at', 'published_at', 'is_published', 'is_featured'])],
             'dir' => ['nullable', Rule::in(['asc', 'desc'])],
 
             // Pagination
